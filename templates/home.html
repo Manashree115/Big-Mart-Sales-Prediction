@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Mart Sales Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-image: url("https://cdn.pixabay.com/photo/2017/08/10/08/18/background-2615499_1280.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      .navbar {
+        background-color: #007bff;
+        box-shadow: 0px 0px 20px #888888;
+      }
+      .navbar-brand {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 2px 2px 2px #888;
+      }
+      .nav-link {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      .jumbotron {
+        background-color: rgba(255,255,255,0.8);
+        margin-top: 50px;
+        box-shadow: 0px 0px 20px #888888;
+        text-align: center;
+        padding: 50px;
+      }
+      .display-1 {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #007bff;
+        text-shadow: 2px 2px 2px #888;
+        margin-bottom: 20px;
+      }
+      .lead {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #007bff;
+        text-shadow: 2px 2px 2px #888;
+        margin-bottom: 20px;
+      }
+      hr {
+        border-top: 2px solid #007bff;
+        margin: 50px auto;
+        width: 50%;
+      }
+      .jumbotron-background {
+        background-image: url('https://static.vecteezy.com/system/resources/previews/001/829/627/original/business-and-promotion-of-illustration-seo-logo-analyze-and-search-for-keywords-and-determine-sales-growth-targets-charts-with-stable-and-increasing-growth-flat-character-style-free-vector.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        padding: 100px 0px;
+      }
+      .jumbotron-background h1 {
+        font-size: 4rem;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        text-shadow: 2px 2px 3px #2b2b2b;
+        margin-bottom: 20px;
+      }
+      .jumbotron-background .lead {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: rgb(0, 0, 0);
+        text-shadow: 2px 2px 2px #888;
+        margin-bottom: 50px;
+      }
+      .jumbotron-background .btn-primary:hover {
+        background-color: #007bff;
+        font-size: 1.5rem;
+        border-radius: 30px;
+        padding: 10px 30px;
+        margin-top: 30px;
+        transition: all 0.4s ease-in-out;
+        }
+
+        .jumbotron-background .btn-primary:hover {
+    background-color: #0069d9;
+    cursor: pointer;
+}
+
+
+
+/* About Section */
+#about {
+    margin-top: 50px;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#about hr {
+    height: 3px;
+    width: 50%;
+    background-color: #007bff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#about p {
+    font-size: 1.3rem;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Services */
+
+#services {
+    margin-top: 50px;
+}
+
+#services h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#services hr {
+    height: 3px;
+    width: 50%;
+    background-color: #007bff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#services p {
+    font-size: 1.3rem;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Contact Us */
+#contact {
+    margin-top: 50px;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#contact hr {
+    height: 3px;
+    width: 50%;
+    background-color: #007bff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* Features Section */
+#features {
+    margin-top: 50px;
+}
+
+#features h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#features hr {
+    height: 3px;
+    width: 50%;
+    background-color: #007bff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#features .row {
+    margin-top: 30px;
+}
+
+#features .feature-item {
+    text-align: center;
+}
+
+#features .icon {
+    font-size: 5rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#features h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+#features p {
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+
+/* Footer Section */
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 30px 0;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+footer a {
+    color: white;
+    font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .jumbotron-background {
+        background-position: center;
+        height: 100%;
+    }
+
+    .jumbotron-background .container {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    #about h2,
+    #features h2 {
+        font-size: 2rem;
+    }
+
+    #about hr,
+    #features hr {
+        width: 75%;
+    }
+
+    #features .icon {
+        font-size: 3rem;
+    }
+
+    #features h3 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Big Mart Sales Prediction</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#services">Services</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+              </ul>
+              </div>
+              </nav>
+              
+              <!-- Jumbotron -->
+              <div class="jumbotron jumbotron-fluid jumbotron-background">
+                <div class="container">
+                  <h1 class="display-1">Big Mart Sales Prediction</h1>
+                  <p class="lead">Predict the sales of Big Mart stores using machine learning algorithms</p>
+                  <a class="btn btn-primary" onclick="window.location.href='/pred'" role="button">Get Started</a>
+                  
+                </div>
+              </div>
+              
+              <!-- About -->
+              <div class="container">
+                <div id="about">
+                  <h2>About</h2>
+                  <hr>
+                  <p>Big Mart is a leading retail chain that operates in multiple countries. The company is known for its wide range of products and competitive pricing. To improve its sales forecasting, Big Mart is looking to implement a machine learning solution that can predict the sales of its stores based on various factors such as product type, location, and time of year. As a data scientist, you have been tasked with developing a model that can accurately predict the sales of Big Mart stores.</p>
+                </div>
+              </div>
+              
+              <!-- Services -->
+              <div class="container">
+                <div id="services">
+                  <h2>Services</h2>
+                  <hr>
+                  <p>At Big Mart Sales Prediction, we offer a range of services to help you improve your sales forecasting:</p>
+                  <ul style="font-size: 1.3rem;margin-bottom: 20px;">
+                    <li>Data cleaning and preparation</li>
+                    <li>Feature engineering and selection</li>
+                    <li>Model selection and training</li>
+                    <li>Hyperparameter tuning</li>
+                    <li>Model evaluation and interpretation</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <!-- Contact -->
+              <div class="container">
+                <div id="contact">
+                  <h2>Contact Us</h2>
+                  <hr>
+                  <form>
+                    <div class="form-group">
+                      <label for="name" style="font-size: 1.2rem;">Name</label>
+                      <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="email"  style="font-size: 1.2rem;">Email</label>
+                      <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="message"  style="font-size: 1.2rem;">Message</label>
+                      <textarea class="form-control" id="message" rows="3" required></textarea>
+                    </div>
+                    <button type="submit"  style="font-size: 1.2rem;" class="btn btn-primary">Submit</button>
+                    <input type="reset" class="btn btn-primary btn-dark" value="Reset">
+                  </form>
+                </div>
+              </div><br>
+              
+              <!-- Footer -->
+              <footer class="bg-dark text-white pt-5 pb-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3>About Us</h3>
+                            <p  style="font-size: 1.2rem;">We are a team of data scientists and analysts who are passionate about helping businesses make better decisions through data analysis and machine learning.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Quick Links</h3>
+                            <ul class="list-unstyled"  style="font-size: 1.2rem;">
+                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="#">Sales Prediction</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h3>Contact Us</h3>
+                            <ul class="list-unstyled"  style="font-size: 1.2rem;">
+                                <li><i class="fas fa-envelope mr-2"></i>info@bigmartsalesprediction.com</li>
+                                <li><i class="fas fa-phone mr-2"></i>123456789</li>
+                                <li><i class="fas fa-map-marker-alt mr-2"></i>Mulund</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            <p>&copy; 2023 Big Mart Sales Prediction. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+              
+              <!-- Scripts -->
+              <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+              <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+              <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            </div>
+            <!-- End of main content -->
+            <!-- Footer -->
+            <footer class="py-5 bg-dark">
+              <div class="container">
+                <p class="m-0 text-center text-white">Big Mart Sales Prediction &copy; 2023</p>
+              </div>
+              <!-- /.container -->
+            </footer>
+            <!-- Bootstrap core JavaScript -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            </body>
+            </html>               
+
